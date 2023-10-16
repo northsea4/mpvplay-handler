@@ -8,7 +8,7 @@ const SAFE_PROTOS: [&str; 11] = [
 /// Protocol of mpv-handler
 ///
 /// ```
-/// mpv://PLUGINS/ENCODED_URL/?PARAMETERS=VALUES
+/// mpvplay://PLUGINS/ENCODED_URL/?PARAMETERS=VALUES
 /// ```
 ///
 /// PLUGINS:
@@ -45,10 +45,10 @@ impl Protocol<'_> {
         let mut v_codec: Option<&str> = None;
         let mut subfile: Option<String> = None;
 
-        let mut i = "mpv://".len();
+        let mut i = "mpvplay://".len();
 
-        // Check scheme `mpv://`
-        if !arg.starts_with("mpv://") {
+        // Check scheme `mpvplay://`
+        if !arg.starts_with("mpvplay://") {
             return Err(Error::IncorrectProtocol(arg.to_string()));
         }
 
@@ -136,7 +136,7 @@ fn decode(data: &str) -> Result<String, Error> {
 fn test_protocol_parse() {
     // All parameters
     let proto =
-        Protocol::parse("mpv://play/aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1HZ2tuMmY1ZS1JVQ/?cookies=www.youtube.com.txt&profile=low-latency&quality=1080p&v_codec=av01&subfile=aHR0cDovL2V4YW1wbGUuY29tL2VuLmFzcw").unwrap();
+        Protocol::parse("mpvplay://play/aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1HZ2tuMmY1ZS1JVQ/?cookies=www.youtube.com.txt&profile=low-latency&quality=1080p&v_codec=av01&subfile=aHR0cDovL2V4YW1wbGUuY29tL2VuLmFzcw").unwrap();
 
     assert_eq!(proto.plugin, Plugins::Play);
     assert_eq!(proto.url, "https://www.youtube.com/watch?v=Ggkn2f5e-IU");
@@ -148,7 +148,7 @@ fn test_protocol_parse() {
 
     // None parameter
     let proto =
-        Protocol::parse("mpv://play/aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1HZ2tuMmY1ZS1JVQ/")
+        Protocol::parse("mpvplay://play/aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1HZ2tuMmY1ZS1JVQ/")
             .unwrap();
     assert_eq!(proto.plugin, Plugins::Play);
     assert_eq!(proto.url, "https://www.youtube.com/watch?v=Ggkn2f5e-IU");
@@ -160,7 +160,7 @@ fn test_protocol_parse() {
 
     // None parameter and last slash
     let proto =
-        Protocol::parse("mpv://play/aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1HZ2tuMmY1ZS1JVQ")
+        Protocol::parse("mpvplay://play/aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1HZ2tuMmY1ZS1JVQ")
             .unwrap();
     assert_eq!(proto.plugin, Plugins::Play);
     assert_eq!(proto.url, "https://www.youtube.com/watch?v=Ggkn2f5e-IU");
