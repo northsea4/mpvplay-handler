@@ -63,9 +63,9 @@ echo Enjoy!
     goto :EOF
 
 :add_verbs
-    call :reg add "HKCR\mpv" /d "URL:mpv Handler link" /f
-    call :reg add "HKCR\mpv" /v "Content Type" /d "application/x-mpv" /f
-    call :reg add "HKCR\mpv" /v "URL Protocol" /f
-    call :reg add "HKCR\mpv\DefaultIcon" /d "\"%mpv_exe_path%\",1" /f
-    call :reg add "HKCR\mpv\shell\open\command" /d "\"%mpv_handler_path%\" \"%%%%1\"" /f
+    call :reg add "HKCR\mpvplay" /d "URL:mpvplay Handler link" /f
+    call :reg add "HKCR\mpvplay" /v "Content Type" /d "application/x-mpvplay" /f
+    call :reg add "HKCR\mpvplay" /v "URL Protocol" /f
+    call :reg add "HKCR\mpvplay\DefaultIcon" /d "\"%mpv_exe_path%\",1" /f
+    call :reg add "HKCR\mpvplay\shell\open\command" /d "\"%mpv_handler_path%\" \"%%%%1\"" /f
     goto :EOF

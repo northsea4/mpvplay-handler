@@ -45,7 +45,7 @@ impl Protocol<'_> {
         let mut v_codec: Option<&str> = None;
         let mut subfile: Option<String> = None;
 
-        let mut i = "mpvplay://".len();
+        let i = "mpvplay://".len();
 
         // Check scheme `mpvplay://`
         if !arg.starts_with("mpvplay://") {
@@ -53,21 +53,27 @@ impl Protocol<'_> {
         }
 
         // Get plugin
-        (i, plugin) = if let Some(s) = arg[i..].find('/') {
-            match &arg[i..i + s] {
-                "play" => (i + s + 1, Plugins::Play),
-                _ => return Err(Error::IncorrectProtocol(arg.to_string())),
-            }
-        } else {
-            return Err(Error::IncorrectProtocol(arg.to_string()));
-        };
+        // (i, plugin) = if let Some(s) = arg[i..].find('/') {
+        //     match &arg[i..i + s] {
+        //         "play" => (i + s + 1, Plugins::Play),
+        //         _ => return Err(Error::IncorrectProtocol(arg.to_string())),
+        //     }
+        // } else {
+        //     return Err(Error::IncorrectProtocol(arg.to_string()));
+        // };
 
         // Get url and decode by base64
-        (i, url) = if let Some(s) = arg[i..].find('/') {
-            (i + s + 1, decode(&arg[i..i + s])?)
-        } else {
-            (arg.len(), decode(&arg[i..])?)
-        };
+        // (i, url) = if let Some(s) = arg[i..].find('/') {
+        //     (i + s + 1, decode(&arg[i..i + s])?)
+        // } else {
+        //     (arg.len(), decode(&arg[i..])?)
+        // };
+
+        // 取消plugin，直接解析url，url不是base64编码，就是普通的url，所以不需要decode
+        url = arg[i..].to_string();
+
+        // 随便设置一个plugin
+        plugin = Plugins::Play;
 
         // Get parameters
         if let Some(s) = arg[i..].find('?') {
