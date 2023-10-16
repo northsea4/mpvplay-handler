@@ -1,13 +1,13 @@
 [package]
-name = "mpv-handler"
-version = "0.3.5"
+name = "mpvplay-handler"
+version = "0.3.6"
 edition = "2021"
 authors = ["Akatsuki Rui <akiirui@outlook.com>"]
 description = "Play website videos and songs with mpv & yt-dlp"
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/akiirui/mpv-handler"
-repository = "https://github.com/akiirui/mpv-handler"
+homepage = "https://github.com/northsea4/mpvplay-handler"
+repository = "https://github.com/northsea4/mpvplay-handler"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
