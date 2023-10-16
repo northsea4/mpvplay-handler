@@ -27,7 +27,7 @@ pub fn exec(proto: &Protocol, config: &Config) -> Result<(), Error> {
                 Some(path) => path,
                 None => return Err(Error::FailedGetConfigDir),
             };
-            p.push("mpv-handler");
+            p.push("mpvplay-handler");
             p.push("cookies");
             p.push(v);
         }

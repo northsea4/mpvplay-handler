@@ -2,7 +2,7 @@ use crate::error::Error;
 use serde::Deserialize;
 use std::path::PathBuf;
 
-/// Config of mpv-handler
+/// Config of mpvplay-handler
 ///
 /// - `mpv`: mpv binary path
 /// - `ytdl`: yt-dlp binary path
@@ -43,7 +43,7 @@ fn config_path() -> Result<PathBuf, Error> {
         Some(path) => path,
         None => return Err(Error::FailedGetConfigDir),
     };
-    path.push("mpv-handler");
+    path.push("mpvplay-handler");
     path.push("config.toml");
 
     Ok(path)

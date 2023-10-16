@@ -18,17 +18,17 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            artifact_name: mpv-handler
+            artifact_name: mpvplay-handler
             asset_name: linux-amd64
             target: x86_64-unknown-linux-musl
 
           - os: windows-latest
-            artifact_name: mpv-handler.exe
+            artifact_name: mpvplay-handler.exe
             asset_name: windows-amd64
             target: x86_64-pc-windows-msvc
 
           - os: macos-latest
-            artifact_name: mpv-handler
+            artifact_name: mpvplay-handler
             asset_name: macos-amd64
             target: x86_64-apple-darwin
 
@@ -64,34 +64,34 @@ jobs:
 
       - name: Package Linux
         run: |
-          zip -j mpv-handler-linux-amd64.zip \
+          zip -j mpvplay-handler-linux-amd64.zip \
             README*.md \
             share/linux/* \
-            linux-amd64/mpv-handler
+            linux-amd64/mpvplay-handler
 
       - name: Package Windows
         run: |
-          zip -j mpv-handler-windows-amd64.zip \
+          zip -j mpvplay-handler-windows-amd64.zip \
             README*.md \
             share/windows/* \
-            windows-amd64/mpv-handler.exe
+            windows-amd64/mpvplay-handler.exe
 
       - name: Package macOS
         run: |
-          mkdir -p macos-amd64/mpv-handler.app/Contents/MacOS
+          mkdir -p macos-amd64/mpvplay-handler.app/Contents/MacOS
           cp README*.md macos-amd64
-          cp share/macos/Info.plist macos-amd64/mpv-handler.app/Contents
-          mv macos-amd64/mpv-handler macos-amd64/mpv-handler.app/Contents/MacOS
+          cp share/macos/Info.plist macos-amd64/mpvplay-handler.app/Contents
+          mv macos-amd64/mpvplay-handler macos-amd64/mpvplay-handler.app/Contents/MacOS
           cd macos-amd64
-          zip -r ../mpv-handler-macos-amd64.zip .
+          zip -r ../mpvplay-handler-macos-amd64.zip .
 
       - name: SHA512SUM
         run: |
-          sha512sum mpv-handler-*.zip > sha512sum
+          sha512sum mpvplay-handler-*.zip > sha512sum
 
       - name: Publish
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "mpv-handler-*.zip,sha512sum"
+          artifacts: "mpvplay-handler-*.zip,sha512sum"
           generateReleaseNotes: true
           token: ${{ secrets.GITHUB_TOKEN }}

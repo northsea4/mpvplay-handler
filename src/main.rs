@@ -43,8 +43,8 @@ fn run() -> Result<(), Error> {
 fn print_usage() {
     let version: &str = option_env!("MPV_HANDLER_VERSION").unwrap_or(env!("CARGO_PKG_VERSION"));
 
-    println!("mpv-handler {}\n", version);
-    println!("Usage:\n  {}\n", "mpv-handler [options] <url>",);
+    println!("mpvplay-handler {}\n", version);
+    println!("Usage:\n  {}\n", "mpvplay-handler [options] <url>",);
     println!("OPTIONS:\n  {}    {}", "-v, --version", "show version");
 }
 

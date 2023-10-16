@@ -48,9 +48,9 @@ echo Enjoy!
 
 :check_binary
     cd /D %~dp0
-    set mpv_handler_path=%cd%\mpv-handler.exe
+    set mpv_handler_path=%cd%\mpvplay-handler.exe
     set mpv_handler_conf=%cd%\config.toml
-    if not exist "%mpv_handler_path%" call :die "Not found mpv-handler.exe"
+    if not exist "%mpv_handler_path%" call :die "Not found mpvplay-handler.exe"
     if not exist "%mpv_handler_conf%" call :die "Not found config.toml"
     goto :EOF
 

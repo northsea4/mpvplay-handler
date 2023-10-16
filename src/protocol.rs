@@ -5,7 +5,7 @@ const SAFE_PROTOS: [&str; 11] = [
     "http", "https", "ftp", "ftps", "rtmp", "rtmps", "rtmpe", "rtmpt", "rtmpts", "rtmpte", "data",
 ];
 
-/// Protocol of mpv-handler
+/// Protocol of mpvplay-handler
 ///
 /// ```
 /// mpvplay://PLUGINS/ENCODED_URL/?PARAMETERS=VALUES
